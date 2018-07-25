@@ -6,6 +6,12 @@ A set of useful components for common UI elements based on drizzle-react-compone
 - Spinner for Account balance
 - Input form for optional txParams
 
+## Instalation
+
+```bash
+npm install drizzle-react-components-plus
+```
+
 ## Components
 
 ### LoadingContainer
