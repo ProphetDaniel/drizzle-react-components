@@ -1,8 +1,8 @@
 {
   "name": "drizzle-react-components++",
   "version": "0.1.0",
-  "description": "Put some Drizzle on your React components.",
-  "main": "dist/drizzle-react-components.js",
+  "description": "Drizzle react componets with material UI",
+  "main": "src/index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "publish": "webpack --config webpack.prod.js"
@@ -12,9 +12,9 @@
     "react"
   ],
   "author": {
-    "name": "Josh Quintal",
-    "email": "josh@trufflesuite.com",
-    "url": "http://truffleframework.com/"
+    "name": "Prophet Daniel",
+    "email": "prophetdaniel@ethereumclassic.org",
+    "url": "https://ethereumclassic.org/"
   },
   "license": "ISC",
   "dependencies": {
