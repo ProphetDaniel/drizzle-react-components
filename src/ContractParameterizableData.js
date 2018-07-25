@@ -6,6 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import SendIcon from "@material-ui/icons/Send";
+import ContractData from "./ContractData";
 
 const styles = theme => ({
   container: {
@@ -38,7 +39,7 @@ const styles = theme => ({
  * Create component.
  */
 
-class ContractMyForm extends CanGetABIComponent {
+class ContractParametrizableData extends CanGetABIComponent {
   constructor(props, context) {
     super(props, context.drizzle.contracts);
 
@@ -46,10 +47,6 @@ class ContractMyForm extends CanGetABIComponent {
     this.handleSubmit = this.handleSubmit.bind(this);
 
     this.inputs = this.getABI(this.props.method).inputs.clone();
-    this.inputs.push({ name: "gas", type: "uint256", txParam: true });
-    this.inputs.push({ name: "gasLimit", type: "uint256", txParam: true });
-    this.inputs.push({ name: "gasPrice", type: "uint256", txParam: true });
-    this.inputs.push({ name: "value", type: "uint256", txParam: true });
 
     let initialState = {};
     this.inputs.forEach(input => {
@@ -58,31 +55,20 @@ class ContractMyForm extends CanGetABIComponent {
     this.state = initialState;
   }
 
-  generateSendArguments() {
-    let originalCallArgs = this.inputs
-      .filter(input => !input.txParam)
-      .map(input => this.state[input.name]);
-    let relevantTxParameters = this.inputs.filter(
-      input => input.txParam && this.state[input.name] !== ""
-    );
-    if (!relevantTxParameters.length) return originalCallArgs;
-    let txParams = {};
-    relevantTxParameters.map(
-      input => (txParams[input.name] = this.state[input.name])
-    );
-    let augmentedCallArgs = originalCallArgs.clone();
-    augmentedCallArgs.push(txParams);
-    return augmentedCallArgs;
+  generateCallArguments() {
+    let originalCallArgs = this.inputs.map(input => this.state[input.name]);
+    return originalCallArgs;
   }
 
   handleSubmit() {
-    this.getMethod(this.props.method).cacheSend(
-      ...this.generateSendArguments()
-    );
+    this.setState({ callArgs: [...this.generateCallArguments()] });
   }
 
   handleInputChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({
+      [event.target.name]: event.target.value,
+      callArgs: false
+    });
   }
 
   translateType(type) {
@@ -136,16 +122,23 @@ class ContractMyForm extends CanGetABIComponent {
           Submit
           <SendIcon className={classes.rightIcon} />
         </Button>
+        {this.state.callArgs ? (
+          <ContractData
+            contract={this.getContract().contractName}
+            method={this.props.method}
+            methodArgs={this.state.callArgs}
+          />
+        ) : null}
       </form>
     );
   }
 }
 
-ContractMyForm.contextTypes = {
+ContractParametrizableData.contextTypes = {
   drizzle: PropTypes.object
 };
 
-ContractMyForm.propTypes = {
+ContractParametrizableData.propTypes = {
   classes: PropTypes.object.isRequired,
   contract: PropTypes.string.isRequired,
   method: PropTypes.string.isRequired,
@@ -164,6 +157,6 @@ const mapStateToProps = state => {
 };
 
 export default drizzleConnect(
-  withStyles(styles)(ContractMyForm),
+  withStyles(styles)(ContractParametrizableData),
   mapStateToProps
 );
