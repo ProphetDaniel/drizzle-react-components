@@ -1,4 +1,4 @@
-# drizzle-react-components++
+# drizzle-react-components-plus
 A set of useful components for common UI elements based on drizzle-react-components with Material-UI. It solving the following problems:
 
 - Lack of ContractParameterizableData
