@@ -1,6 +1,6 @@
 {
   "name": "drizzle-react-components-plus",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Drizzle react componets with material UI",
   "main": "src/index.js",
   "scripts": {
@@ -16,9 +16,9 @@
     "email": "prophetdaniel@ethereumclassic.org",
     "url": "https://ethereumclassic.org/"
   },
-  "repository" : {
-    "type" : "git",
-    "url" : "git+https://github.com/ProphetDaniel/drizzle-react-components-plus.git"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProphetDaniel/drizzle-react-components-plus.git"
   },
   "license": "ISC",
   "dependencies": {
@@ -26,7 +26,8 @@
     "@material-ui/icons": "^2.0.0",
     "drizzle-react": "^1.1.1",
     "prop-types": "^15.5.10",
-    "react": "^16.3.0"
+    "react": "^16.3.0",
+    "react-dom": "^16.4.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

@@ -6,8 +6,8 @@ process.env.BABEL_ENV = 'production';
 module.exports = {
   entry: './src/index.js',
   output: {
-    filename: 'drizzle-react-components.js',
-    library: 'drizzle-react-components',
+    filename: 'drizzle-react-components-plus.js',
+    library: 'drizzle-react-components-plus',
     libraryTarget: 'umd',
     path: path.resolve(__dirname, 'dist')
   },
