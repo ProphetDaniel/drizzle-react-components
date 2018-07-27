@@ -113,22 +113,28 @@ class ContractParametrizableData extends CanGetABIComponent {
             />
           );
         }, this)}
-        <Button
-          variant="contained"
-          color="primary"
-          className={classes.button}
-          onClick={this.handleSubmit}
-        >
-          Submit
-          <SendIcon className={classes.rightIcon} />
-        </Button>
-        {this.state.callArgs ? (
-          <ContractData
-            contract={this.getContract().contractName}
-            method={this.props.method}
-            methodArgs={this.state.callArgs}
-          />
-        ) : null}
+        {(() => {
+          switch(this.state.callArgs){
+            case null:
+              return null;
+            case false:
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                onClick={this.handleSubmit}
+              >
+                Submit
+                <SendIcon className={classes.rightIcon} />
+              </Button>
+            default:
+              <ContractData
+                contract={this.getContract().contractName}
+                method={this.props.method}
+                methodArgs={this.state.callArgs}
+              />
+          }
+        })()}
       </form>
     );
   }
