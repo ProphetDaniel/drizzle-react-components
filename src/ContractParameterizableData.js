@@ -39,7 +39,7 @@ const styles = theme => ({
  * Create component.
  */
 
-class ContractParametrizableData extends CanGetABIComponent {
+class ContractParameterizableData extends CanGetABIComponent {
   constructor(props, context) {
     super(props, context.drizzle.contracts);
 
@@ -113,38 +113,40 @@ class ContractParametrizableData extends CanGetABIComponent {
             />
           );
         }, this)}
-        {(() => {
-          switch(this.state.callArgs){
-            case null:
-              return null;
-            case false:
-              <Button
-                variant="contained"
-                color="primary"
-                className={classes.button}
-                onClick={this.handleSubmit}
-              >
-                Submit
-                <SendIcon className={classes.rightIcon} />
-              </Button>
-            default:
-              <ContractData
-                contract={this.getContract().contractName}
-                method={this.props.method}
-                methodArgs={this.state.callArgs}
-              />
-          }
-        })()}
+        {resultFromArgs(this)}
       </form>
     );
   }
 }
 
-ContractParametrizableData.contextTypes = {
+let resultFromArgs = component => {
+  switch (component.state.callArgs) {
+    case null:
+      return null;
+    case false:
+      <Button
+        variant="contained"
+        color="primary"
+        className={classes.button}
+        onClick={component.handleSubmit}
+      >
+        Submit
+        <SendIcon className={classes.rightIcon} />
+      </Button>;
+    default:
+      <ContractData
+        contract={component.getContract().contractName}
+        method={component.props.method}
+        methodArgs={component.state.callArgs}
+      />;
+  }
+};
+
+ContractParameterizableData.contextTypes = {
   drizzle: PropTypes.object
 };
 
-ContractParametrizableData.propTypes = {
+ContractParameterizableData.propTypes = {
   classes: PropTypes.object.isRequired,
   contract: PropTypes.string.isRequired,
   method: PropTypes.string.isRequired,
@@ -163,6 +165,6 @@ const mapStateToProps = state => {
 };
 
 export default drizzleConnect(
-  withStyles(styles)(ContractParametrizableData),
+  withStyles(styles)(ContractParameterizableData),
   mapStateToProps
 );
