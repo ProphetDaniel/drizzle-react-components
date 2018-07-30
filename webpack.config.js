@@ -1,31 +1,30 @@
-const path = require('path');
+const path = require("path");
 
-process.env.BABEL_ENV = 'production';
+process.env.BABEL_ENV = "production";
 
 module.exports = {
-  entry: './src/index.js',
+  entry: "./src/index.js",
   output: {
-    filename: 'drizzle-react-components-plus.js',
-    library: 'drizzle-react-components-plus',
-    libraryTarget: 'umd',
-    path: path.resolve(__dirname, 'dist')
+    filename: "drizzle-react-components-plus.js",
+    library: "drizzle-react-components-plus",
+    libraryTarget: "umd",
+    path: path.resolve(__dirname, "dist")
   },
   module: {
-    loaders: [{
-      test: /\.(js)$/,
-      include: path.resolve(__dirname, 'src'),
-      loader: 'babel-loader',
-      options: {
-        presets: ['react'],
-        plugins: [require('babel-plugin-transform-class-properties'), require('babel-plugin-transform-object-rest-spread')]
+    loaders: [
+      {
+        test: /\.(js)$/,
+        include: path.resolve(__dirname, "src"),
+        loader: "babel-loader",
+        options: {
+          presets: ["react"],
+          plugins: [
+            require("babel-plugin-transform-class-properties"),
+            require("babel-plugin-transform-object-rest-spread")
+          ]
+        }
       }
-    }]
+    ]
   },
-  externals: [
-    'drizzle',
-    'drizzle-react',
-    'prop-types',
-    'react',
-    'redux'
-  ]
+  externals: ["drizzle", "drizzle-react", "prop-types", "react", "redux"]
 };

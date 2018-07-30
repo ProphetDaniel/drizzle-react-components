@@ -120,11 +120,12 @@ class ContractParameterizableData extends CanGetABIComponent {
 }
 
 let resultFromArgs = component => {
+  let classes = component.props;
   switch (component.state.callArgs) {
-    case null:
+    case undefined:
       return null;
     case false:
-      <Button
+      return <Button
         variant="contained"
         color="primary"
         className={classes.button}
@@ -134,9 +135,9 @@ let resultFromArgs = component => {
         <SendIcon className={classes.rightIcon} />
       </Button>;
     default:
-      <ContractData
+      return <ContractData
         contract={component.getContract().contractName}
-        method={component.props.method}
+        method={classes.method}
         methodArgs={component.state.callArgs}
       />;
   }
