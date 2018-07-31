@@ -69,7 +69,7 @@ class Home extends Component {
                 suppressed it with the <code>hideIndicator</code> prop because
                 we know this variable is constant.
               </p>
-              <p>
+              <div>
                 <strong>Total Supply</strong>:{" "}
                 <ContractData
                   contract="TutorialToken"
@@ -81,22 +81,20 @@ class Home extends Component {
                   method="symbol"
                   hideIndicator
                 />
-              </p>
-              <p>
                 <strong>My Balance</strong>:{" "}
                 <ContractData
                   contract="TutorialToken"
                   method="balanceOf"
                   methodArgs={[this.props.accounts[0]]}
                 />
-              </p>
-              <p>
+              </div>
+              <div>
                 <strong>Anyone's Balance</strong>:{" "}
                 <ContractParameterizableData
                   contract="TutorialToken"
                   method="balanceOf"
                 />
-              </p>
+              </div>
               <h3>Send Tokens</h3>
               <ContractForm
                 contract="TutorialToken"
@@ -125,22 +123,22 @@ class Home extends Component {
                 from bytes to UTF-8 strings and the device data struct is
                 iterated as a list.
               </p>
-              <p>
+              <div>
                 <strong>String 1</strong>:{" "}
                 <ContractData
                   contract="ComplexStorage"
                   method="string1"
                   toUtf8
                 />
-              </p>
-              <p>
+              </div>
+              <div>
                 <strong>String 2</strong>:{" "}
                 <ContractData
                   contract="ComplexStorage"
                   method="string2"
                   toUtf8
                 />
-              </p>
+              </div>
               <strong>Single Device Data</strong>:{" "}
               <ContractData contract="ComplexStorage" method="singleDD" />
               <br />
@@ -155,6 +153,22 @@ class Home extends Component {
               <br />
               <br />
             </div>
+
+            {/*<div className="pure-u-1-1">*/}
+            {/*<h2>Mapping test</h2>*/}
+            {/*<p>Test a simple known mapping</p>*/}
+            {/*<ContractData contract="ComplexStorage" method="uints1" methodArgs={["0xbCcc714d56bc0da0fd33d96d2a87b680dD6D0DF6"]} />*/}
+            {/*<br />*/}
+            {/*<br />*/}
+            {/*</div>*/}
+
+            {/*<div className="pure-u-1-1">*/}
+            {/*<h2>Mapping test</h2>*/}
+            {/*<p>Test a complex known mapping</p>*/}
+            {/*<ContractData contract="ComplexStorage" method="structs1" methodArgs={["0xbCcc714d56bc0da0fd33d96d2a87b680dD6D0DF6"]} />*/}
+            {/*<br />*/}
+            {/*<br />*/}
+            {/*</div>*/}
           </div>
         </main>
       </Fragment>
