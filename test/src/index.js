@@ -6,9 +6,9 @@ import { DrizzleProvider } from "drizzle-react";
 import "typeface-roboto";
 
 // Layouts
-import App from "./components/App/App";
+import App from "./App";
 import HomeContainer from "./layouts/home/HomeContainer";
-import { LoadingContainer } from "../../src/index";
+import { LoadingContainer } from "drizzle-react-components-plus";
 
 import store from "./store";
 import drizzleOptions from "./drizzleOptions";

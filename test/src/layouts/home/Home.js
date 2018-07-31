@@ -3,11 +3,10 @@ import {
   ContractForm,
   AccountData,
   ContractData,
-  ContractAllData,
-  ContractParameterizableData
-} from "../../../../src/index";
+  ContractParameterizableData,
+  ContractAllData
+} from "drizzle-react-components-plus";
 import logo from "../../logo.png";
-import ContractParameterizableData from "../../../../src/ContractParameterizableData";
 
 class Home extends Component {
   render() {
@@ -92,7 +91,7 @@ class Home extends Component {
                 />
               </p>
               <p>
-                <strong>Someone's Balance</strong>:{" "}
+                <strong>Anyone's Balance</strong>:{" "}
                 <ContractParameterizableData
                   contract="TutorialToken"
                   method="balanceOf"

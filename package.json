@@ -1,9 +1,10 @@
 {
   "name": "drizzle-react-components-plus",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Drizzle react components with material UI",
   "main": "src/index.js",
   "scripts": {
+    "test": "cd test && npm run scripts/start",
     "build": "webpack --config webpack.config.js",
     "publish": "webpack --config webpack.prod.js"
   },
