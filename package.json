@@ -1,6 +1,6 @@
 {
   "name": "drizzle-react-components-plus",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Drizzle react components with material UI",
   "main": "src/index.js",
   "scripts": {

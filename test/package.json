@@ -54,7 +54,7 @@
   "dependencies": {
     "@material-ui/core": "^1.4.0",
     "@material-ui/icons": "^1.1.0",
-    "drizzle-react-components-plus": "^0.1.9",
+    "drizzle-react-components-plus": "^0.1.10",
     "eth-block-tracker-es5": "^2.3.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
