@@ -7,7 +7,7 @@ import CanGetABIComponent from "./CanGetABIComponent";
  * Create component.
  */
 
-class ContractMyData extends CanGetABIComponent {
+class ContractData extends CanGetABIComponent {
   constructor(props, context) {
     super(props, context.drizzle.contracts);
 
@@ -93,7 +93,7 @@ class ContractMyData extends CanGetABIComponent {
   }
 }
 
-ContractMyData.contextTypes = {
+ContractData.contextTypes = {
   drizzle: PropTypes.object
 };
 
@@ -107,4 +107,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default drizzleConnect(ContractMyData, mapStateToProps);
+export default drizzleConnect(ContractData, mapStateToProps);
